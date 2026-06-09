@@ -2,27 +2,34 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="ALLOWALL">
     <title>PENTAKSIRAN MURID PRASEKOLAH PINTAR 2026 - Portal Eksekutif</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-y: auto; height: 100%; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F8FAFC;
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
         }
-        .corporate-border {
-            border-color: #E2E8F0;
-        }
-        .table-header {
-            background-color: #F1F5F9;
-            color: #1E293B;
-        }
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        .corporate-border { border-color: #E2E8F0; }
+        .table-header { background-color: #F1F5F9; color: #1E293B; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: #F8FAFC; }
         ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 2px; }
+        header { position: sticky; top: 0; z-index: 40; width: 100%; }
+        #toast-container { position: fixed; top: 1rem; right: 1rem; z-index: 9999; max-width: calc(100vw - 2rem); }
+        @media (max-width: 640px) {
+            header .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
+            main { padding-left: 1rem !important; padding-right: 1rem !important; }
+        }
         @media print {
             .no-print { display: none !important; }
             .print-full { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
@@ -31,11 +38,11 @@
         .print-card-break { page-break-inside: avoid; }
     </style>
 </head>
-<body class="text-slate-950 min-h-screen flex flex-col">
+<body class="text-slate-950 flex flex-col" style="min-height:100vh">
     <!-- Toast notifications -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none no-print"></div>
 
-    <header class="bg-[#0B1528] text-white shadow-xl sticky top-0 z-40 border-b border-slate-800 no-print">
+    <header class="bg-[#0B1528] text-white shadow-xl border-b border-slate-800 no-print" style="position:sticky;top:0;z-index:40">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between py-5 gap-4">
                 <div class="flex items-center gap-4">
@@ -442,7 +449,7 @@
     <script>
         // ==================== CONFIGURATION CENTRALIZED ====================
         // Gantikan dengan URL Web App Apps Script anda untuk automasi penyegerakan terus.
-        const SCRIPT_URL = "PASTE_MY_APPS_SCRIPT_URL_HERE";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxhCISBbhlcaZqlrjimdX7Tc9ABlsP7dcaeikj35ZKCO4YOm9QJc6Wcf5-Z2XvoTV7q/exec";
 
         // URL CSV Google Sheets untuk bacaan/segerak data (kekal dalam kod).
         const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRL5GhYhVk73pcMDCdRHI_kefwVh9X60hxTN6tNywjDZDUwAO29ijnbW71nfxMvsyASJIKBZLJvmsxv/pub?output=csv";
@@ -1024,6 +1031,9 @@
                         eviden: recordObject.eviden,
                         tp: recordObject.tp,
                         subject: recordObject.subject,
+                        tarikh: recordObject.date,
+                        hari: recordObject.day,
+                        komponen: recordObject.componentId,
                         timestamp: recordObject.timestamp,
                         fileName: recordObject.evidenceName,
                         fileType: recordObject.evidenceType,
@@ -1224,13 +1234,31 @@
             }
         }
 
-        function deleteRecord(id) {
-            if (confirm("Adakah anda pasti mahu pemadamkan rekod ini dari storan peranti?")) {
+        async function deleteRecord(id) {
+            if (confirm("Adakah anda pasti mahu memadam rekod ini? Rekod akan dipadam dari peranti DAN Google Sheet.")) {
+                // Padam dari localStorage dulu
                 records = records.filter(r => r.id !== id);
                 saveToLocalStorage();
                 renderLogTable();
                 renderDashboard();
-                showToast('Rekod Berjaya Dipadam!', 'success');
+                showToast('Rekod dipadam dari peranti. Sedang memadam dari Google Sheet...', 'success');
+
+                // Hantar arahan padam ke Google Sheet
+                const targetUrl = SCRIPT_URL;
+                if (targetUrl && targetUrl !== "PASTE_MY_APPS_SCRIPT_URL_HERE") {
+                    try {
+                        await fetch(targetUrl, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ action: 'delete', id: id })
+                        });
+                        showToast('Rekod berjaya dipadam dari Google Sheet!', 'success');
+                    } catch (err) {
+                        console.error("Gagal padam dari Google Sheet:", err);
+                        showToast('Rekod dipadam dari peranti, tetapi gagal padam dari Google Sheet.', 'error');
+                    }
+                }
             }
         }
 
@@ -1456,6 +1484,44 @@
         }
 
         window.onload = initApp;
+
+        // ── Google Sites iframe: hantar ketinggian halaman supaya iframe auto-resize ──
+        function reportHeight() {
+            const h = document.body.scrollHeight;
+            try {
+                window.parent.postMessage({ type: 'setHeight', height: h }, '*');
+            } catch(e) {}
+        }
+        // Lapor ketinggian semasa muat, dan setiap kali kandungan berubah
+        window.addEventListener('load', reportHeight);
+        window.addEventListener('resize', reportHeight);
+        const _origSwitchTab = switchTab;
+        // Override switchTab supaya lapor ketinggian setiap kali tab bertukar
+        function switchTab(tabId) {
+            _origSwitchTab(tabId);
+            setTimeout(reportHeight, 300);
+        }
+
+        // ── Fallback: jika localStorage disekat (iframe sandboxed) guna memori sahaja ──
+        (function() {
+            try {
+                localStorage.setItem('_test', '1');
+                localStorage.removeItem('_test');
+            } catch(e) {
+                // localStorage disekat — guna objek dalam memori sebagai ganti
+                const _mem = {};
+                Object.defineProperty(window, 'localStorage', {
+                    value: {
+                        getItem: k => _mem[k] !== undefined ? _mem[k] : null,
+                        setItem: (k, v) => { _mem[k] = String(v); },
+                        removeItem: k => { delete _mem[k]; },
+                        clear: () => { Object.keys(_mem).forEach(k => delete _mem[k]); }
+                    },
+                    writable: false
+                });
+                console.warn('localStorage disekat dalam iframe. Menggunakan storan memori sementara.');
+            }
+        })();
     </script>
 </body>
 </html>
