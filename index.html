@@ -1832,3 +1832,22 @@ function doPost(e) {
     </script>
 </body>
 </html>
+const API_URL = "https://script.google.com/macros/s/AKfycby61hvdnis4twM81TWjF25rGnJP2Q3qUZ0BqCSCP8azxcTvXP3Qf7DRSikZuUQh3bnL/exec";
+
+async function loadDataFromSheet() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
+
+  console.log(data);
+
+  // contoh masuk dropdown murid
+  const select = document.getElementById("form-student-select");
+  select.innerHTML = "";
+
+  data.slice(1).forEach(row => {
+    let option = document.createElement("option");
+    option.value = row[0];
+    option.textContent = row[0];
+    select.appendChild(option);
+  });
+}
