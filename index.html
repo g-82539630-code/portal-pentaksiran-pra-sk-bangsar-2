@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PENTAKSIRAN MURID PRASEKOLAH PINTAR 2026 - Portal Eksekutif</title>
+    <title>PENTAKSIRAN MURID PRASEKOLAH PINTAR - Portal Eksekutif</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F8FAFC;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
             scroll-behavior: smooth;
-        }
-        .serif-title {
-            font-family: 'Playfair Display', Georgia, serif;
         }
         .table-header {
             background-color: #F8FAFC;
@@ -23,215 +20,227 @@
             font-weight: 700;
         }
         ::-webkit-scrollbar { 
-            width: 6px; 
-            height: 6px; 
+            width: 8px; 
+            height: 8px; 
         }
         ::-webkit-scrollbar-track { 
             background: #F1F5F9; 
+            border-radius: 8px;
         }
         ::-webkit-scrollbar-thumb { 
             background: #CBD5E1; 
-            border-radius: 4px; 
+            border-radius: 8px; 
+            border: 2px solid #F1F5F9;
         }
         ::-webkit-scrollbar-thumb:hover { 
             background: #94A3B8; 
         }
         @media print {
             .no-print { display: none !important; }
-            .print-full { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
-            body { background-color: white !important; color: black !important; }
+            .print-full { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: none !important; background: none !important; }
+            body { background-color: white !important; color: black !important; background: none !important; }
             .print-card-break { page-break-inside: avoid; }
         }
-        /* Kesan Hover & Animasi Kad */
+        /* Animasi Lembut Guru Prasekolah */
         .premium-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
         .premium-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px -5px rgba(11, 21, 40, 0.05), 0 8px 10px -6px rgba(11, 21, 40, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(11, 21, 40, 0.05), 0 10px 10px -5px rgba(11, 21, 40, 0.03);
+            border-color: rgba(56, 189, 248, 0.4);
         }
         .glow-badge-amber {
-            box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
         }
         .glow-badge-rose {
-            box-shadow: 0 0 12px rgba(244, 63, 94, 0.2);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
         }
-
+        /* Laporan Prestasi Format Arial Tetap */
         #certificate-print-area, #certificate-print-area * {
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+        .serif-title {
             font-family: Arial, Helvetica, sans-serif !important;
         }
     </style>
 </head>
-<body class="text-slate-950 min-h-screen flex flex-col antialiased">
+<body class="text-slate-900 min-h-screen flex flex-col antialiased">
 
     <!-- Notifikasi Toast -->
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none no-print"></div>
+    <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none no-print"></div>
 
-    <header class="bg-[#0B1528] text-white shadow-xl sticky top-0 z-40 border-b border-slate-800 no-print">
+    <!-- Pengepala Utama Portal -->
+    <header class="bg-[#0B1528] text-white shadow-2xl sticky top-0 z-40 border-b border-slate-800 no-print">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between py-6 gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="p-3 bg-gradient-to-br from-[#38BDF8] to-[#1D4ED8] text-slate-950 rounded-2xl shadow-2xl ring-4 ring-blue-500/10">
-                        <i data-lucide="award" class="w-8 h-8 text-white"></i>
+                <div class="flex items-center gap-5">
+                    <div class="p-3.5 bg-gradient-to-tr from-sky-400 via-blue-600 to-indigo-650 text-white rounded-2xl shadow-lg ring-4 ring-sky-500/10 flex items-center justify-center">
+                        <i data-lucide="graduation-cap" class="w-8 h-8"></i>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="bg-blue-500/20 text-[#38BDF8] text-[9px] font-black tracking-widest px-3 py-1 rounded-full border border-blue-500/20 uppercase">
-                                KONSOL EKSEKUTIF UTAMA
+                            <span class="bg-gradient-to-r from-sky-400 to-blue-500 text-slate-950 text-[9px] font-black tracking-widest px-3 py-1 rounded-full uppercase shadow-xs">
+                                PORTAL PENTAKSIRAN RASMI
                             </span>
                         </div>
-                        <h1 class="text-xl md:text-2xl font-extrabold tracking-wider mt-2 text-white uppercase">
-                            PENTAKSIRAN MURID <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-amber-300">PRASEKOLAH PINTAR 2026</span>
+                        <h1 class="text-2xl font-extrabold tracking-tight mt-2 text-white uppercase">
+                            PENTAKSIRAN MURID <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-amber-300">PRASEKOLAH PINTAR <span class="display-year">2026</span></span>
                         </h1>
-                        <p class="text-xs text-slate-300 font-medium mt-1">
-                            Sesi Akademik 2026 &bull; Guru Pentaksir: <span class="text-amber-300 font-bold tracking-wide">Cik Ainie Amanie</span>
+                        <p class="text-xs text-slate-300 font-medium mt-1.5 flex items-center gap-2">
+                            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Sesi Akademik <span class="display-year">2026</span> &bull; Guru Pentaksir: <span class="text-amber-300 font-bold tracking-wide font-sans">Cik Ainie Amanie</span>
                         </p>
                     </div>
                 </div>
-                <nav class="flex bg-[#121F35] p-2 rounded-2xl border border-slate-800/80 overflow-x-auto gap-2">
-                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="nav-tab flex items-center justify-center px-5 py-3 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-350 bg-white text-[#0B1528] shadow-lg">
+                
+                <!-- Navigasi Menu -->
+                <nav class="flex bg-[#121F35] p-2 rounded-2xl border border-slate-800/80 overflow-x-auto gap-2.5 shadow-inner">
+                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="nav-tab flex items-center justify-center px-6 py-3.5 text-xs font-bold rounded-xl whitespace-nowrap transition-all duration-300 bg-white text-[#0B1528] shadow-md">
                         <i data-lucide="line-chart" class="w-4 h-4 mr-2"></i> Ringkasan Laporan
                     </button>
-                    <button onclick="switchTab('penilaian')" id="tab-penilaian" class="nav-tab flex items-center justify-center px-5 py-3 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-350 text-slate-300 hover:text-white hover:bg-slate-800/50">
+                    <button onclick="switchTab('penilaian')" id="tab-penilaian" class="nav-tab flex items-center justify-center px-6 py-3.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-300 text-slate-300 hover:text-white hover:bg-slate-800/50">
                         <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Kemasukan Borang
                     </button>
-                    <button onclick="switchTab('pelaporan')" id="tab-pelaporan" class="nav-tab flex items-center justify-center px-5 py-3 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-350 text-slate-300 hover:text-white hover:bg-slate-800/50">
+                    <button onclick="switchTab('pelaporan')" id="tab-pelaporan" class="nav-tab flex items-center justify-center px-6 py-3.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-300 text-slate-300 hover:text-white hover:bg-slate-800/50">
                         <i data-lucide="award" class="w-4 h-4 mr-2"></i> Transkrip Murid
                     </button>
-                    <button onclick="switchTab('senarai')" id="tab-senarai" class="nav-tab flex items-center justify-center px-5 py-3 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-350 text-slate-300 hover:text-white hover:bg-slate-800/50">
-                        <i data-lucide="archive" class="w-4 h-4 mr-2"></i> Arkib Pangkalan Data (<span id="log-count-badge" class="font-extrabold text-sky-400">0</span>)
+                    <button onclick="switchTab('senarai')" id="tab-senarai" class="nav-tab flex items-center justify-center px-6 py-3.5 text-xs font-semibold rounded-xl whitespace-nowrap transition-all duration-300 text-slate-300 hover:text-white hover:bg-slate-800/50">
+                        <i data-lucide="archive" class="w-4 h-4 mr-2"></i> Arkib Pangkalan Data (<span id="log-count-badge" class="font-extrabold text-sky-400 bg-sky-950/80 px-2 py-0.5 rounded-md border border-sky-900/50">0</span>)
                     </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-6 lg:px-8 py-10 w-full print-full">
+    <main class="flex-grow max-w-7xl mx-auto px-6 lg:px-8 py-12 w-full print-full space-y-12">
         
         <!-- ======== TAB 1: DASHBOARD ======== -->
-        <section id="content-dashboard" class="tab-content space-y-10">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-slate-200 pb-6 no-print">
+        <section id="content-dashboard" class="tab-content space-y-12">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-slate-200/80 pb-6 no-print">
                 <div>
-                    <h2 class="text-xl font-extrabold tracking-tight text-[#0B1528] flex items-center gap-2">
-                        <i data-lucide="pie-chart" class="w-5.5 h-5.5 text-blue-600"></i>Analisis Tahap Penguasaan Murid Prasekolah (Purata Keseluruhan)
+                    <h2 class="text-2xl font-extrabold tracking-tight text-[#0B1528] flex items-center gap-2.5">
+                        <i data-lucide="pie-chart" class="w-6 h-6 text-blue-650"></i>Analisis Tahap Penguasaan Murid Prasekolah
                     </h2>
-                    <p class="text-xs text-slate-500 font-semibold mt-1">Metrik prestasi kumulatif dikira mengikut standard Analisis Tahap Penguasaan Murid Prasekolah.</p>
+                    <p class="text-sm text-slate-500 font-semibold mt-1">Metrik prestasi kumulatif dikira mengikut standard Analisis Tahap Penguasaan Murid Prasekolah.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3">
-                    <button onclick="openCSVExportModal()" class="flex items-center px-5 py-3 bg-[#0B1528] hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition-all shadow-md">
-                        <i data-lucide="download" class="w-4 h-4 mr-2 text-sky-400"></i>Eksport Data (CSV)
+                    <button onclick="openCSVExportModal()" class="flex items-center px-6 py-3.5 bg-[#0B1528] hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition-all shadow-md hover:shadow-lg">
+                        <i data-lucide="download" class="w-4.5 h-4.5 mr-2 text-sky-400"></i>Eksport Data (CSV)
                     </button>
-                    <button onclick="openPrintWizard('dashboard')" class="flex items-center px-5 py-3 bg-white hover:bg-slate-50 text-[#0B1528] text-xs font-bold rounded-xl transition-all shadow-sm border border-slate-200">
-                        <i data-lucide="printer" class="w-4 h-4 mr-2 text-blue-600"></i>Cetak Laporan Am
+                    <button onclick="openPrintWizard('dashboard')" class="flex items-center px-6 py-3.5 bg-white hover:bg-slate-50 text-[#0B1528] text-xs font-bold rounded-xl transition-all shadow-sm border border-slate-200">
+                        <i data-lucide="printer" class="w-4.5 h-4.5 mr-2 text-blue-600"></i>Cetak Laporan Am
                     </button>
                 </div>
             </div>
 
             <!-- Kad Metrik Utama -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 no-print">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between premium-card">
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Jumlah Murid Terdaftar</p>
-                        <p class="text-3xl font-black text-[#0B1528] mt-2" id="dash-total-students-count">25</p>
+                <div class="bg-white p-7 rounded-3xl border border-slate-100 shadow-xs flex items-center justify-between premium-card">
+                    <div class="space-y-1">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Jumlah Murid Terdaftar</p>
+                        <p class="text-4xl font-black text-[#0B1528]" id="dash-total-students-count">25</p>
                     </div>
-                    <div class="p-4 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100"><i data-lucide="users" class="w-6 h-6"></i></div>
+                    <div class="p-4 bg-sky-50 text-sky-600 rounded-2xl border border-sky-100/50"><i data-lucide="users" class="w-6 h-6"></i></div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between premium-card">
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Jumlah Rekod Pentaksiran</p>
-                        <p id="stat-total-rekod" class="text-3xl font-black text-[#0B1528] mt-2">0</p>
+                <div class="bg-white p-7 rounded-3xl border border-slate-100 shadow-xs flex items-center justify-between premium-card">
+                    <div class="space-y-1">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Rekod Pentaksiran</p>
+                        <p id="stat-total-rekod" class="text-4xl font-black text-[#0B1528]">0</p>
                     </div>
-                    <div class="p-4 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100"><i data-lucide="database" class="w-6 h-6"></i></div>
+                    <div class="p-4 bg-indigo-50 text-indigo-600 rounded-2xl border border-indigo-100/50"><i data-lucide="database" class="w-6 h-6"></i></div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between premium-card">
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status Integrasi GSheets</p>
-                        <p id="stat-connection" class="text-[10px] font-black text-blue-800 mt-2.5 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100 inline-block uppercase tracking-wider">Sedia Dimuat naik</p>
+                <div class="bg-white p-7 rounded-3xl border border-slate-100 shadow-xs flex items-center justify-between premium-card">
+                    <div class="space-y-1">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Status Integrasi GSheets</p>
+                        <p id="stat-connection" class="text-[9px] font-black text-blue-800 mt-2 bg-blue-50/80 px-3 py-1.5 rounded-xl border border-blue-100 inline-block uppercase tracking-widest">Sedia Dimuat naik</p>
                     </div>
-                    <div class="p-4 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100"><i data-lucide="cloud" class="w-6 h-6"></i></div>
+                    <div class="p-4 bg-amber-50 text-amber-600 rounded-2xl border border-amber-100/50"><i data-lucide="cloud" class="w-6 h-6"></i></div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between premium-card">
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sesi Pembelajaran</p>
-                        <p class="text-xl font-black text-[#0B1528] mt-2">Sesi 2026/2027</p>
+                <div class="bg-white p-7 rounded-3xl border border-slate-100 shadow-xs flex items-center justify-between premium-card">
+                    <div class="space-y-1">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Sesi Pembelajaran</p>
+                        <p class="text-xl font-black text-[#0B1528] mt-2">Sesi <span class="display-year-range">2026/2027</span></p>
                     </div>
-                    <div class="p-4 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100"><i data-lucide="calendar" class="w-6 h-6"></i></div>
+                    <div class="p-4 bg-emerald-50 text-emerald-600 rounded-2xl border border-emerald-100/50"><i data-lucide="calendar" class="w-6 h-6"></i></div>
                 </div>
             </div>
 
-            <!-- Tapis Bidang & Kad Analisis (Lebar Penuh) -->
-            <div class="space-y-6">
-                <div class="no-print bg-slate-100 p-6 rounded-2xl border border-slate-200/80">
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0B1528] mb-4 flex items-center gap-2">
-                        <i data-lucide="sliders" class="w-4 h-4"></i>Tapis Analisis Mengikut Bidang Pentaksiran:
+            <!-- Tapis Bidang & Kad Analisis -->
+            <div class="space-y-8">
+                <div class="no-print bg-white p-7 rounded-3xl border border-slate-200/60 shadow-xs">
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#0B1528] mb-4 flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-4.5 h-4.5 text-blue-600"></i>Tapis Analisis Mengikut Bidang Pentaksiran:
                     </label>
-                    <div class="flex flex-wrap gap-2" id="dashboard-bidang-filters">
-                        <button onclick="filterDashboardBidang('ALL')" id="dash-btn-all" class="px-4 py-2.5 text-[10px] font-extrabold rounded-xl transition-all bg-[#0B1528] text-white shadow-sm uppercase">Semua</button>
-                        <button onclick="filterDashboardBidang('BM')" id="dash-btn-bm" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Bahasa Melayu</button>
-                        <button onclick="filterDashboardBidang('BI')" id="dash-btn-bi" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Bahasa Inggeris</button>
-                        <button onclick="filterDashboardBidang('KF')" id="dash-btn-kf" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Kognitif</button>
-                        <button onclick="filterDashboardBidang('KE')" id="dash-btn-ke" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Kreativiti & Estetika</button>
-                        <button onclick="filterDashboardBidang('PI')" id="dash-btn-pi" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Pendidikan Islam</button>
-                        <button onclick="filterDashboardBidang('FK')" id="dash-btn-fk" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Fizikal & Kesejahteraan</button>
-                        <button onclick="filterDashboardBidang('SE')" id="dash-btn-se" class="px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase">Sosioemosi</button>
+                    <div class="flex flex-wrap gap-2.5" id="dashboard-bidang-filters">
+                        <button onclick="filterDashboardBidang('ALL')" id="dash-btn-all" class="px-5 py-3 text-[10px] font-black rounded-xl transition-all duration-300 bg-[#0B1528] text-white shadow-md uppercase">Semua</button>
+                        <button onclick="filterDashboardBidang('BM')" id="dash-btn-bm" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Bahasa Melayu</button>
+                        <button onclick="filterDashboardBidang('BI')" id="dash-btn-bi" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Bahasa Inggeris</button>
+                        <button onclick="filterDashboardBidang('KF')" id="dash-btn-kf" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Kognitif</button>
+                        <button onclick="filterDashboardBidang('KE')" id="dash-btn-ke" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Kreativiti & Estetika</button>
+                        <button onclick="filterDashboardBidang('PI')" id="dash-btn-pi" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Pendidikan Islam</button>
+                        <button onclick="filterDashboardBidang('FK')" id="dash-btn-fk" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Fizikal & Kesejahteraan</button>
+                        <button onclick="filterDashboardBidang('SE')" id="dash-btn-se" class="px-5 py-3 text-[10px] font-bold rounded-xl transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase">Sosioemosi</button>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 gap-6 max-h-[520px] overflow-y-auto pr-2" id="dashboard-cards-container"></div>
+                
+                <div class="hidden">
+                    <canvas id="tpChart"></canvas>
+                    <span id="dash-average-tp">0</span>
+                    <span id="dash-total-rekod-sub">0</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 max-h-[600px] overflow-y-auto pr-3" id="dashboard-cards-container"></div>
             </div>
 
             <!-- ==================== TABEL INTERVENSI TP1 & TP2 ==================== -->
-            <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm mt-10 premium-card">
-                <div class="flex items-center gap-3 border-b pb-4 border-slate-150 mb-6">
-                    <div class="p-2.5 bg-amber-500/10 text-amber-600 rounded-xl">
-                        <i data-lucide="shield-alert" class="w-5.5 h-5.5 animate-pulse"></i>
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-sm mt-12 premium-card">
+                <div class="flex items-center gap-4 border-b pb-5 border-slate-100 mb-8">
+                    <div class="p-3 bg-amber-500/10 text-amber-600 rounded-2xl ring-4 ring-amber-500/5">
+                        <i data-lucide="shield-alert" class="w-6 h-6 animate-pulse"></i>
                     </div>
                     <div>
-                        <h3 class="text-sm font-extrabold text-[#0B1528] uppercase tracking-wider">Analisis Penguasaan &amp; Cadangan Intervensi (TP1 &amp; TP2)</h3>
-                        <p class="text-[10px] text-slate-500 font-semibold mt-1">Pelan tindakan intervensi pembelajaran berstruktur untuk membantu pencapaian standard minima.</p>
+                        <h3 class="text-base font-extrabold text-[#0B1528] uppercase tracking-wider">Analisis Penguasaan &amp; Cadangan Intervensi (TP1 &amp; TP2)</h3>
+                        <p class="text-xs text-slate-500 font-semibold mt-1">Pelan tindakan intervensi pembelajaran berstruktur untuk membantu pencapaian standard minima.</p>
                     </div>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- Bidang / Subjek Selector -->
-                    <div class="lg:col-span-4 border-r border-slate-150 pr-0 lg:pr-6 space-y-2.5" id="intervensi-subject-menu">
-                        <!-- Dimuat secara dinamik -->
-                    </div>
-                    <!-- Panel Butiran Intervensi -->
-                    <div class="lg:col-span-8 space-y-6 animate-fadeIn" id="intervensi-details-panel">
-                        <!-- Cadangan dan senarai murid dinamik dalam Bahasa Melayu -->
-                    </div>
+                    <div class="lg:col-span-4 border-r border-slate-100 pr-0 lg:pr-8 space-y-3" id="intervensi-subject-menu"></div>
+                    <div class="lg:col-span-8 space-y-6" id="intervensi-details-panel"></div>
                 </div>
             </div>
         </section>
 
         <!-- ======== TAB 2: BORANG PENILAIAN ======== -->
-        <section id="content-penilaian" class="tab-content hidden max-w-4xl mx-auto space-y-8 no-print">
-            <div class="bg-[#0B1528] text-white rounded-2xl p-6 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
-                <div class="flex items-center gap-3">
-                    <div class="p-3 bg-slate-800 rounded-xl text-sky-400 border border-slate-700">
-                        <i data-lucide="cloud-lightning" class="w-5.5 h-5.5"></i>
+        <section id="content-penilaian" class="tab-content hidden max-w-4xl mx-auto space-y-10 no-print">
+            <div class="bg-gradient-to-r from-[#0B1528] to-[#12253F] text-white rounded-3xl p-7 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
+                <div class="flex items-center gap-4">
+                    <div class="p-3.5 bg-slate-800/80 rounded-2xl text-sky-400 border border-slate-700/60">
+                        <i data-lucide="cloud-lightning" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-white">Saluran Google Sheets Aktif</h3>
-                        <p class="text-[11px] text-slate-300 mt-1">Penyimpanan diselaraskan secara automatik ke hamparan data awan Google Sheets harian.</p>
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-white">Saluran Google Sheets Aktif</h3>
+                        <p class="text-xs text-slate-300 mt-1">Penyimpanan diselaraskan secara automatik ke hamparan data awan Google Sheets harian.</p>
                     </div>
                 </div>
-                <button onclick="switchTab('sop')" class="px-5 py-3 bg-sky-400/20 text-sky-300 hover:bg-sky-400/30 rounded-xl border border-sky-400/30 text-xs font-bold whitespace-nowrap transition-all">
+                <button onclick="switchTab('sop')" class="px-6 py-3.5 bg-sky-450/20 text-sky-300 hover:bg-sky-450/30 rounded-xl border border-sky-400/30 text-xs font-bold whitespace-nowrap transition-all shadow-sm">
                     Buka Panduan Google Sheets
                 </button>
             </div>
             
             <div class="space-y-2">
-                <h2 class="text-lg font-extrabold text-[#0B1528] uppercase tracking-tight">Kemasukan Pentaksiran Baharu</h2>
-                <p class="text-xs text-slate-500 font-semibold">Lengkapkan butiran penguasaan komponen di bawah mengikut rekod harian murid.</p>
+                <h2 class="text-2xl font-extrabold text-[#0B1528] uppercase tracking-tight">Kemasukan Pentaksiran Baharu</h2>
+                <p class="text-sm text-slate-500 font-semibold">Lengkapkan butiran penguasaan komponen di bawah mengikut rekod harian murid.</p>
             </div>
 
-            <form id="pentaksiranForm" onsubmit="event.preventDefault();" class="bg-white rounded-2xl border border-slate-200/80 p-8 sm:p-10 space-y-8 shadow-sm">
+            <form id="pentaksiranForm" onsubmit="event.preventDefault();" class="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-10 space-y-8 shadow-sm premium-card">
                 <div id="form-alert-message" class="empty:hidden"></div>
                 
-                <div class="space-y-2">
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500">Nama Penuh Murid Prasekolah <span class="text-rose-600">*</span></label>
-                    <select required id="form-student-select" onchange="onFormStudentChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition duration-200">
+                <div class="space-y-2.5">
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Nama Penuh Murid Prasekolah <span class="text-rose-600">*</span></label>
+                    <select required id="form-student-select" onchange="onFormStudentChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-850 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-4 focus:ring-sky-500/10 focus:border-sky-400 transition-all duration-300">
                         <option value="">-- Sila Pilih Nama Murid --</option>
                     </select>
                 </div>
@@ -239,9 +248,9 @@
                 <div id="student-status-box" class="hidden mt-4"></div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500">Mata Pelajaran / Bidang <span class="text-rose-600">*</span></label>
-                        <select required id="form-subject-select" onchange="onFormSubjectChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition duration-200">
+                    <div class="space-y-2.5">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Mata Pelajaran / Bidang <span class="text-rose-600">*</span></label>
+                        <select required id="form-subject-select" onchange="onFormSubjectChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-850 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-4 focus:ring-sky-500/10 focus:border-sky-400 transition-all duration-300">
                             <option value="BM">Bahasa Melayu (BM)</option>
                             <option value="BI">Bahasa Inggeris (BI)</option>
                             <option value="KF">Bidang Kognitif (KF)</option>
@@ -251,39 +260,39 @@
                             <option value="SE">Sosioemosi (SE)</option>
                         </select>
                     </div>
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500">Kod Komponen <span class="text-rose-600">*</span></label>
-                        <select required id="form-component-select" onchange="onComponentChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition duration-200">
+                    <div class="space-y-2.5">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Kod Komponen <span class="text-rose-600">*</span></label>
+                        <select required id="form-component-select" onchange="onComponentChange()" class="w-full bg-slate-50 border border-slate-200 text-slate-850 text-xs rounded-xl p-4 outline-none font-bold cursor-pointer focus:bg-white focus:ring-4 focus:ring-sky-500/10 focus:border-sky-400 transition-all duration-300">
                             <option value="">-- Pilih Komponen --</option>
                         </select>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-50/50 p-6 rounded-3xl border border-slate-200/80">
                     <div class="space-y-3">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500">Tarikh Pentaksiran <span class="text-rose-600">*</span></label>
-                        <input type="date" required id="form-date-input" onchange="updateFormDay()" class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-4 outline-none font-bold focus:ring-2 focus:ring-blue-600/20 transition" />
-                        <p class="text-[10px] text-slate-500 font-semibold mt-2">Hari dikesan: <span id="form-day-label" class="font-extrabold text-[#0B1528] bg-white border px-3 py-1 rounded shadow-sm ml-2">-</span></p>
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Tarikh Pentaksiran <span class="text-rose-600">*</span></label>
+                        <input type="date" required id="form-date-input" onchange="updateFormDay()" class="w-full bg-white border border-slate-200 text-slate-850 text-xs rounded-xl p-4 outline-none font-bold focus:ring-4 focus:ring-sky-500/10 focus:border-sky-400 transition-all duration-300" />
+                        <p class="text-[11px] text-slate-500 font-semibold mt-2.5">Hari dikesan: <span id="form-day-label" class="font-extrabold text-[#0B1528] bg-white border border-slate-200 px-3.5 py-1 rounded-xl shadow-xs ml-2">-</span></p>
                     </div>
                     <div class="space-y-3">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500">Muat Naik Fail Bukti (Gambar / Video / Audio)</label>
-                        <div class="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 bg-white flex flex-col items-center justify-center hover:bg-slate-50 cursor-pointer min-h-[120px] transition-all duration-200">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Muat Naik Fail Bukti (Gambar / Video / Audio)</label>
+                        <div class="relative border-2 border-dashed border-slate-350 rounded-2xl p-6 bg-white flex flex-col items-center justify-center hover:bg-slate-50 cursor-pointer min-h-[130px] transition-all duration-300 hover:border-sky-400">
                             <input type="file" id="form-file-input" accept="image/*,video/*,audio/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-                            <span id="form-file-label" class="text-xs text-slate-500 font-semibold pointer-events-none text-center">
-                                <i data-lucide="upload-cloud" class="w-8 h-8 mx-auto mb-2 text-blue-600"></i>Klik untuk memilih fail bukti pembelajaran
+                            <span id="form-file-label" class="text-xs text-slate-500 font-semibold pointer-events-none text-center flex flex-col items-center gap-2">
+                                <i data-lucide="upload-cloud" class="w-10 h-10 text-sky-500"></i>Klik untuk memilih fail bukti pembelajaran
                             </span>
-                            <img id="image-upload-preview" class="hidden mt-3 max-h-20 rounded-xl border shadow-sm" />
-                            <video id="video-upload-preview" controls class="hidden mt-3 max-h-28 w-full rounded-xl border shadow-sm"></video>
-                            <audio id="audio-upload-preview" controls class="hidden mt-3 w-full max-w-[220px]"></audio>
+                            <img id="image-upload-preview" class="hidden mt-3 max-h-24 rounded-2xl border shadow-md" />
+                            <video id="video-upload-preview" controls class="hidden mt-3 max-h-32 w-full rounded-2xl border shadow-md"></video>
+                            <audio id="audio-upload-preview" controls class="hidden mt-3 w-full max-w-[240px]"></audio>
                         </div>
-                        <p class="text-[9px] text-slate-400 font-semibold text-center mt-2">Format yang disokong: Gambar, Video, Audio MP3 (Had 5MB)</p>
+                        <p class="text-[9px] text-slate-400 font-bold text-center mt-2.5 uppercase tracking-wide">Format yang disokong: Gambar, Video, Audio MP3 (Maksimum 5MB)</p>
                     </div>
                 </div>
                 
-                <div id="dynamic-inputs-container" class="hidden border-t border-slate-200 pt-8 space-y-6"></div>
+                <div id="dynamic-inputs-container" class="hidden border-t border-slate-100 pt-8 space-y-6"></div>
                 
                 <div class="pt-6">
-                    <button type="button" id="form-submit-btn" onclick="handleSavePenilaian()" class="w-full bg-[#0B1528] hover:bg-[#121F35] text-white font-bold text-xs py-4.5 rounded-xl shadow-lg transition-all uppercase tracking-widest flex items-center justify-center gap-2">
+                    <button type="button" id="form-submit-btn" onclick="handleSavePenilaian()" class="w-full bg-[#0B1528] hover:bg-[#121F35] text-white font-bold text-xs py-5 rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest flex items-center justify-center gap-2">
                         <i data-lucide="save" class="w-5 h-5"></i>
                         <span>Sahkan &amp; Simpan Pentaksiran</span>
                     </button>
@@ -292,37 +301,37 @@
         </section>
 
         <!-- ======== TAB 3: PELAPORAN TRANSKRIP ======== -->
-        <section id="content-pelaporan" class="tab-content hidden space-y-8">
+        <section id="content-pelaporan" class="tab-content hidden space-y-10">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-slate-200 pb-6 no-print">
                 <div>
-                    <h2 class="text-lg font-extrabold text-slate-900 uppercase tracking-tight">Transkrip &amp; Dokumen Prestasi Murid</h2>
-                    <p class="text-xs text-slate-500 font-semibold mt-1">Format Laporan standard bersedia untuk cetakan PDF rasmi bagi simpanan fail peribadi murid.</p>
+                    <h2 class="text-2xl font-extrabold text-slate-900 uppercase tracking-tight">Transkrip &amp; Dokumen Prestasi Murid</h2>
+                    <p class="text-sm text-slate-500 font-semibold mt-1">Format Laporan standard bersedia untuk cetakan PDF rasmi bagi simpanan fail peribadi murid.</p>
                 </div>
-                <button onclick="openPrintWizard('pelaporan')" class="flex items-center px-5 py-3 bg-[#0B1528] text-white text-xs font-bold rounded-xl hover:bg-blue-950 transition-all shadow-md">
+                <button onclick="openPrintWizard('pelaporan')" class="flex items-center px-6 py-3.5 bg-[#0B1528] text-white text-xs font-bold rounded-xl hover:bg-blue-950 transition-all shadow-md">
                     <i data-lucide="printer" class="w-4.5 h-4.5 mr-2"></i>Cetak Laporan Rasmi (PDF)
                 </button>
             </div>
 
             <!-- MENU PEMILIHAN MURID & SISTEM LOGO SEKOLAH -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 no-print premium-card">
-                <div class="flex items-center gap-4 w-full md:w-auto flex-grow max-w-lg">
-                    <span class="text-xs font-bold uppercase text-slate-500 whitespace-nowrap tracking-wider">Nama Murid Prasekolah:</span>
-                    <select id="report-student-select" onchange="renderIndividualCertificate()" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold rounded-xl p-3.5 outline-none cursor-pointer focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition-all"></select>
+            <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 no-print premium-card">
+                <div class="flex items-center gap-4 w-full md:w-auto flex-grow max-xl">
+                    <span class="text-xs font-bold uppercase text-slate-500 whitespace-nowrap tracking-wider">Pilih Nama Murid:</span>
+                    <select id="report-student-select" onchange="renderIndividualCertificate()" class="w-full bg-slate-50 border border-slate-200 text-slate-850 text-xs font-bold rounded-xl p-4 outline-none cursor-pointer focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all duration-300"></select>
                 </div>
 
-                <!-- LOGO SEKOLAH: PENGEKALAN LOCALSTORAGE -->
-                <div class="flex items-center gap-5 bg-slate-50 px-5 py-4 rounded-2xl border border-slate-200 w-full md:w-auto shadow-sm">
-                    <div class="w-16 h-16 bg-white border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center overflow-hidden" id="school-logo-preview">
-                        <span class="text-[8px] text-slate-400 font-bold uppercase text-center p-2">Tiada Logo</span>
+                <!-- LOGO SEKOLAH -->
+                <div class="flex items-center gap-5 bg-slate-50/50 px-6 py-5 rounded-2xl border border-slate-200 w-full md:w-auto shadow-inner">
+                    <div class="w-20 h-20 bg-white border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center overflow-hidden" id="school-logo-preview">
+                        <span class="text-[8px] text-slate-400 font-bold uppercase text-center p-2 leading-tight">Tiada Logo</span>
                     </div>
                     <div class="flex flex-col gap-1.5 text-left">
                         <h4 class="text-[10px] font-black text-slate-800 uppercase tracking-wider">Logo Sekolah Rasmi</h4>
-                        <p class="text-[9px] text-slate-400 max-w-[200px] leading-snug">Muat naik logo sekolah sekali sahaja. Logo akan kekal disimpan pada pelayar peranti.</p>
-                        <div class="flex gap-2 mt-1">
-                            <button onclick="document.getElementById('school-logo-input').click()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[9px] font-extrabold rounded-lg shadow-sm transition-all">
+                        <p class="text-[9px] text-slate-400 max-w-[220px] leading-relaxed">Muat naik logo sekolah sekali sahaja. Logo akan kekal disimpan pada pelayar peranti.</p>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="document.getElementById('school-logo-input').click()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[9px] font-black rounded-lg shadow-xs transition-all">
                                 Muat Naik
                             </button>
-                            <button onclick="removeSchoolLogo()" class="px-3 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 text-[9px] font-extrabold rounded-lg transition-all">
+                            <button onclick="removeSchoolLogo()" class="px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 text-[9px] font-black rounded-lg transition-all">
                                 Padam
                             </button>
                         </div>
@@ -331,21 +340,19 @@
                 </div>
             </div>
 
-            <!-- SIJIL / TRANSKRIP FORMAT HIGH-FIDELITY -->
-            <div id="certificate-print-area" class="bg-white rounded-2xl border-4 border-slate-350 shadow-xl p-8 sm:p-14 max-w-4xl mx-auto relative overflow-hidden transition-all duration-300">
-                <div class="absolute inset-4 border border-slate-200 pointer-events-none rounded-xl"></div>
-                <div class="absolute inset-5 border-2 border-slate-300/45 pointer-events-none rounded-lg"></div>
-                <div class="relative z-10 space-y-8">
+            <!-- SIJIL / TRANSKRIP FORMAT HIGH-FIDELITY (ARIAL) -->
+            <div id="certificate-print-area" class="bg-white rounded-3xl border-8 border-double border-slate-350 shadow-xl p-10 sm:p-16 max-w-4xl mx-auto relative overflow-hidden transition-all duration-300">
+                <div class="absolute inset-4 border border-slate-200 pointer-events-none rounded-2xl"></div>
+                <div class="absolute inset-6 border-2 border-slate-300/40 pointer-events-none rounded-xl"></div>
+                <div class="relative z-10 space-y-10">
                     
-                    <div class="text-center space-y-3 pb-6 border-b-2 border-slate-800 relative">
-                        <!-- Logo Sekolah -->
+                    <div class="text-center space-y-4 pb-8 border-b-2 border-slate-800 relative">
                         <div class="school-logo-placeholder flex justify-center mb-4 hidden"></div>
-                        
-                        <h3 class="text-2xl font-serif font-bold tracking-wide text-[#0B1528] uppercase serif-title">Laporan Prestasi Prasekolah Rasmi</h3>
-                        <p class="text-[10px] font-extrabold tracking-widest text-slate-500 uppercase">ANALISIS TAHAP PENGUASAAN MURID PRASEKOLAH &bull; INSTITUSI PRASEKOLAH PINTAR</p>
+                        <h3 class="text-2xl font-bold tracking-wide text-[#0B1528] uppercase serif-title">Laporan Prestasi Prasekolah Rasmi</h3>
+                        <p class="text-[10px] font-black tracking-widest text-slate-500 uppercase leading-normal">ANALISIS TAHAP PENGUASAAN MURID PRASEKOLAH &bull; INSTITUSI PRASEKOLAH PINTAR &bull; SESI <span class="display-year">2026</span></p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/70 p-6 rounded-xl border border-slate-200 text-xs text-left">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/70 p-6 rounded-2xl border border-slate-200 text-xs text-left">
                         <div class="space-y-1">
                             <p class="text-slate-400 font-bold uppercase tracking-widest text-[8px]">Nama Murid Penilai</p>
                             <p id="cert-student-name" class="text-xs font-bold text-[#0B1528] uppercase">--</p>
@@ -356,34 +363,34 @@
                         </div>
                     </div>
                     
-                    <div class="space-y-4">
-                        <h4 class="text-[9px] font-extrabold uppercase tracking-widest text-[#0B1528] text-left border-l-4 border-blue-600 pl-2">Purata Tahap Penguasaan Mengikut Subjek</h4>
+                    <div class="space-y-5">
+                        <h4 class="text-[10px] font-black uppercase tracking-widest text-[#0B1528] text-left border-l-4 border-blue-600 pl-2.5">Purata Tahap Penguasaan Mengikut Subjek</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fadeIn" id="cert-scores-grid"></div>
                     </div>
                     
-                    <div class="space-y-4 text-left">
-                        <h4 class="text-[9px] font-extrabold uppercase tracking-widest text-slate-500 border-b pb-2">Senarai Prestasi Terperinci Mengikut Komponen</h4>
+                    <div class="space-y-5 text-left">
+                        <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-500 border-b pb-2">Senarai Prestasi Terperinci Mengikut Komponen</h4>
                         <div id="cert-detailed-records" class="divide-y divide-slate-100"></div>
                     </div>
 
-                    <div id="cert-intervensi-section" class="space-y-3 text-left p-6 bg-slate-50 rounded-xl border border-slate-200 mt-6">
-                        <h4 class="text-[9px] font-extrabold uppercase tracking-widest text-slate-500 border-b pb-2">Cadangan Intervensi Individu</h4>
-                        <p id="cert-intervensi-text" class="text-xs font-semibold text-slate-850 leading-relaxed italic"></p>
+                    <div id="cert-intervensi-section" class="space-y-3 text-left p-6 bg-slate-55 rounded-2xl border border-slate-200/80 mt-8 shadow-inner">
+                        <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-500 border-b pb-2">Cadangan Intervensi Individu</h4>
+                        <p id="cert-intervensi-text" class="text-xs font-bold text-slate-800 leading-relaxed italic"></p>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-12 text-center pt-10 border-t border-slate-200">
-                        <div class="space-y-10">
+                    <div class="grid grid-cols-2 gap-12 text-center pt-12 border-t border-slate-200">
+                        <div class="space-y-12">
                             <div class="h-10"></div>
                             <div class="border-t border-slate-200 pt-3 text-[11px]">
                                 <p class="font-bold text-slate-900 uppercase">Cik Ainie Amanie</p>
-                                <p class="text-slate-400 text-[10px] font-semibold">Guru Penilai</p>
+                                <p class="text-slate-400 text-[10px] font-bold">Guru Penilai</p>
                             </div>
                         </div>
-                        <div class="space-y-10">
+                        <div class="space-y-12">
                             <div class="h-10"></div>
                             <div class="border-t border-slate-200 pt-3 text-[11px]">
                                 <p class="font-bold text-slate-900 uppercase">.</p>
-                                <p class="text-slate-400 text-[10px] font-semibold">Tandatangan Guru Besar</p>
+                                <p class="text-slate-400 text-[10px] font-bold">Tandatangan Guru Besar</p>
                             </div>
                         </div>
                     </div>
@@ -393,22 +400,22 @@
         </section>
 
         <!-- ======== TAB 4: ARKIB PANGKALAN DATA ======== -->
-        <section id="content-senarai" class="tab-content hidden space-y-8">
+        <section id="content-senarai" class="tab-content hidden space-y-10">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
-                    <h2 class="text-lg font-extrabold text-slate-900 uppercase tracking-tight">Arkib Pangkalan Data</h2>
-                    <p class="text-xs text-slate-500 font-semibold">Senarai terperinci semua transaksi dan kemasukan rekod dikesan dalam sistem.</p>
+                    <h2 class="text-2xl font-extrabold text-slate-900 uppercase tracking-tight">Arkib Pangkalan Data</h2>
+                    <p class="text-sm text-slate-500 font-semibold">Senarai terperinci semua transaksi dan kemasukan rekod dikesan dalam sistem.</p>
                 </div>
-                <button onclick="openCSVExportModal()" class="px-5 py-3 bg-[#0B1528] hover:bg-[#121F35] text-white text-xs font-bold rounded-xl shadow-md transition-all">
+                <button onclick="openCSVExportModal()" class="px-6 py-3.5 bg-[#0B1528] hover:bg-[#121F35] text-white text-xs font-bold rounded-xl shadow-md transition-all">
                     <i data-lucide="download" class="w-4.5 h-4.5 mr-2 inline"></i>Eksport Pangkalan Data
                 </button>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-4 no-print">
+            <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-4 no-print premium-card">
                 <div class="relative w-full">
-                    <input type="text" id="log-search-query" oninput="renderLogTable()" placeholder="Cari nama murid atau kod komponen..." class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl p-4 pl-10 outline-none font-semibold focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition-all" />
-                    <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-4 text-slate-400"></i>
+                    <input type="text" id="log-search-query" oninput="renderLogTable()" placeholder="Cari nama murid atau kod komponen..." class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl p-4 pl-11 outline-none font-bold focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all duration-300" />
+                    <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3.5 text-slate-400"></i>
                 </div>
-                <select id="log-filter-subject" onchange="renderLogTable()" class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs font-bold outline-none cursor-pointer focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition whitespace-nowrap">
+                <select id="log-filter-subject" onchange="renderLogTable()" class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs font-bold outline-none cursor-pointer focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition duration-300 whitespace-nowrap">
                     <option value="ALL">Semua Bidang</option>
                     <option value="BM">BM</option>
                     <option value="BI">BI</option>
@@ -419,61 +426,70 @@
                     <option value="SE">SE</option>
                 </select>
             </div>
-            <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm">
+            <div class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm premium-card">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr class="border-b border-slate-200 table-header text-[10px] uppercase font-bold tracking-widest">
-                                <th class="px-6 py-4.5">Tarikh</th>
-                                <th class="px-6 py-4.5">Nama Murid</th>
-                                <th class="px-6 py-4.5">Komponen</th>
-                                <th class="px-6 py-4.5">Butiran Penilaian</th>
-                                <th class="px-6 py-4.5 text-center">TP</th>
-                                <th class="px-6 py-4.5 text-right no-print">Tindakan</th>
+                                <th class="px-6 py-5">Tarikh</th>
+                                <th class="px-6 py-5">Nama Murid</th>
+                                <th class="px-6 py-5">Komponen</th>
+                                <th class="px-6 py-5">Butiran Penilaian</th>
+                                <th class="px-6 py-5 text-center">TP</th>
+                                <th class="px-6 py-5 text-right no-print">Tindakan</th>
                             </tr>
                         </thead>
-                        <tbody id="log-table-body" class="divide-y divide-slate-150 text-xs text-slate-700"></tbody>
+                        <tbody id="log-table-body" class="divide-y divide-slate-150 text-slate-700"></tbody>
                     </table>
                 </div>
-                <div id="log-empty-state" class="hidden p-12 text-center">
-                    <i data-lucide="archive" class="w-8 h-8 mx-auto text-slate-300 mb-2"></i>
-                    <p class="text-sm font-bold text-slate-850">Tiada Data Rekod Dijumpai</p>
+                <div id="log-empty-state" class="hidden p-16 text-center">
+                    <i data-lucide="archive" class="w-10 h-10 mx-auto text-slate-350 mb-3"></i>
+                    <p class="text-sm font-bold text-slate-800">Tiada Data Rekod Dijumpai</p>
                 </div>
             </div>
         </section>
 
-        <!-- ======== TAB 5: SOP MANUAL (MANUAL DELETION & SYNC) ======== -->
-        <section id="content-sop" class="tab-content hidden max-w-4xl mx-auto space-y-8 no-print">
+        <!-- ======== TAB 5: SOP MANUAL ======== -->
+        <section id="content-sop" class="tab-content hidden max-w-4xl mx-auto space-y-10 no-print">
             
-            <!-- BAHAGIAN INTEGRASI DAN KONFIGURASI AUTOMATIK -->
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6 premium-card">
-                <div class="flex items-center gap-2 border-b pb-4 border-slate-150">
-                    <i data-lucide="settings" class="w-5.5 h-5.5 text-blue-600"></i>
-                    <h3 class="text-sm font-extrabold text-[#0B1528] uppercase tracking-wider">Sambungan &amp; Konfigurasi Google Sheets</h3>
+            <!-- BAHAGIAN INTEGRASI DAN KONFIGURASI AUTOMATIK (DENGAN INPUT TAHUN BARU) -->
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6 premium-card">
+                <div class="flex items-center gap-3 border-b pb-4 border-slate-150">
+                    <i data-lucide="settings" class="w-6 h-6 text-blue-600"></i>
+                    <h3 class="text-sm font-extrabold text-[#0B1528] uppercase tracking-wider">Sambungan &amp; Konfigurasi Sistem</h3>
                 </div>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                    Sistem ini menyokong penyimpanan secara automatik ke awan Google Sheets. Sila tampalkan URL Web App Google Sheets anda di bawah. Pautan ini akan disimpan secara kekal di dalam memori pelayar dan tidak akan hilang walaupun selepas halaman dimuat semula (*refresh*).
+                    Sila lengkapkan pautan URL Google Web App anda serta Tahun Sesi Akademik semasa di bawah. Tetapan ini akan disimpan secara kekal di dalam memori pelayar peranti harian anda.
                 </p>
-                <div class="flex flex-col sm:flex-row items-stretch gap-4">
-                    <input type="text" id="gdrive-api-url" placeholder="Tampal pautan Web App Google Script anda di sini..." class="flex-grow bg-slate-50 border border-slate-200 text-xs rounded-xl p-4 font-mono outline-none focus:bg-white focus:ring-2 focus:ring-blue-600/20 transition-all" />
-                    <button onclick="saveApiUrl()" class="px-6 py-4 bg-[#0B1528] hover:bg-blue-950 text-white text-xs font-bold rounded-xl shadow-md transition-all whitespace-nowrap">
-                        Simpan Tetapan
-                    </button>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-end">
+                    <div class="md:col-span-6 space-y-2">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Google Apps Script Web App URL</label>
+                        <input type="text" id="gdrive-api-url" placeholder="Tampal pautan Web App Google Script anda di sini..." class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl p-4 font-mono outline-none focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all" />
+                    </div>
+                    <div class="md:col-span-3 space-y-2">
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Tahun Sesi Akademik</label>
+                        <input type="number" id="gdrive-session-year" placeholder="Contoh: 2026" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl p-4 font-mono outline-none focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all" />
+                    </div>
+                    <div class="md:col-span-3">
+                        <button onclick="saveApiUrl()" class="w-full h-[52px] bg-[#0B1528] hover:bg-blue-950 text-white text-xs font-bold rounded-xl shadow-md transition-all whitespace-nowrap">
+                            Simpan Tetapan
+                        </button>
+                    </div>
                 </div>
                 <div id="api-status-msg" class="text-[11px] text-sky-600 font-bold mt-1"></div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6 premium-card">
-                <div class="flex items-center gap-2 border-b pb-4 border-slate-150">
-                    <i data-lucide="book-open" class="w-5.5 h-5.5 text-blue-600"></i>
+            <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6 premium-card">
+                <div class="flex items-center gap-3 border-b pb-4 border-slate-150">
+                    <i data-lucide="book-open" class="w-6 h-6 text-blue-600"></i>
                     <h3 class="text-sm font-extrabold text-[#0B1528] uppercase tracking-wider">Panduan Pemutus &amp; Penyegerakan Google Sheets</h3>
                 </div>
                 <p class="text-xs text-slate-500 leading-relaxed">
                     Bagi memastikan fungsi pemadaman dipautkan ke Google Sheet pada ruangan baris yang betul (*backward loop*), sila pastikan kod Web App di bawah disalin sepenuhnya ke **Extensions > Apps Script** di Google Sheet anda, kemudian deploy semula sebagai Web App baharu.
                 </p>
-                <div class="space-y-3">
+                <div class="space-y-4">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Kod Apps Script Code.gs (Versi Diperbetulkan):</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Kod Apps Script Code.gs:</span>
                         <button onclick="copyScriptCode()" class="text-xs text-blue-600 hover:underline font-bold">Salin Kod</button>
                     </div>
                     <pre id="apps-script-code" class="bg-slate-950 p-4 rounded-xl text-[10px] overflow-x-auto text-emerald-400 select-all font-mono max-h-80 leading-relaxed">
@@ -486,21 +502,55 @@ function doPost(e) {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getSheets()[0]; 
     
+    // Set Headers jika sheet kosong
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        'ID',
+        'Nama',
+        'Bidang',
+        'Komponen',
+        'Tarikh',
+        'TP',
+        'Eviden',
+        'Pautan Fail Bukti'
+      ]);
+    }
+    
     if (action === 'delete') {
       var id = requestData.id;
       var values = sheet.getDataRange().getValues();
-      var deleted = false;
-      // Gelung ke belakang dari baris bawah ke atas (backward loop) bagi mencegah ralat anjakan baris / index shifting
+      // Loop dari belakang (skip row 0 = headers)
       for (var i = values.length - 1; i >= 1; i--) {
         if (values[i][0] == id) { 
           sheet.deleteRow(i + 1);
-          deleted = true;
         }
       }
-      return ContentService.createTextOutput(JSON.stringify({ success: true, deleted: deleted })).setMimeType(ContentService.MimeType.JSON);
+      return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    // Simpan Rekod Baharu
+    // Proses muat naik fail bukti ke Google Drive jika ada
+    var fileUrl = "";
+    if (requestData.fileData && requestData.fileName) {
+      try {
+        var folder, folders = DriveApp.getFoldersByName("Evidens Pentaksiran Prasekolah");
+        if (folders.hasNext()) {
+          folder = folders.next();
+        } else {
+          folder = DriveApp.createFolder("Evidens Pentaksiran Prasekolah");
+        }
+        var decoded = Utilities.base64Decode(requestData.fileData);
+        var blob = Utilities.newBlob(decoded, requestData.fileType, requestData.fileName);
+        var file = folder.createFile(blob);
+        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+        fileUrl = file.getUrl();
+      } catch (fErr) {
+        fileUrl = "Ralat muat naik Drive: " + fErr.toString();
+      }
+    } else {
+      fileUrl = requestData.fileName || "";
+    }
+    
+    // Tambah data baru dengan pautan terus Google Drive
     sheet.appendRow([
       requestData.id,
       requestData.nama,
@@ -509,9 +559,10 @@ function doPost(e) {
       requestData.tarikh,
       requestData.tp,
       requestData.eviden,
-      requestData.fileName || ""
+      fileUrl
     ]);
-    return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ success: true, fileUrl: fileUrl })).setMimeType(ContentService.MimeType.JSON);
+    
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ success: false, error: error.toString() })).setMimeType(ContentService.MimeType.JSON);
   } finally {
@@ -526,7 +577,7 @@ function doPost(e) {
 
     <!-- Modal Senarai Murid Mengikut Tahap Penguasaan -->
     <div id="modal-student-tp" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-xs no-print">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden border border-slate-200 text-left transition-all duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-200 text-left transition-all duration-300">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
                 <div>
                     <h3 id="modal-tp-subject" class="text-xs font-bold text-slate-950">Subjek: --</h3>
@@ -546,7 +597,7 @@ function doPost(e) {
 
     <!-- Modal CSV Export -->
     <div id="modal-csv-export" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/55 backdrop-blur-xs no-print">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden border border-slate-200 text-left">
+        <div class="bg-white rounded-3xl shadow-xl w-full max-w-lg overflow-hidden border border-slate-200 text-left">
             <div class="p-6 bg-[#0B1528] text-white flex justify-between items-center">
                 <h3 class="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                     <i data-lucide="download" class="w-4.5 h-4.5"></i>Konsol Eksport Data (CSV)
@@ -568,7 +619,7 @@ function doPost(e) {
 
     <!-- Modal Cetak Pintar -->
     <div id="modal-print-wizard" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs no-print">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-200 text-left">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-200 text-left">
             <div class="p-5 bg-[#0B1528] text-white flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <i data-lucide="printer" class="w-5 h-5 text-amber-300"></i>
@@ -606,9 +657,6 @@ function doPost(e) {
 
     <!-- ==================== LOGIK UTAMA SISTEM JAVASCRIPT ==================== -->
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxhCISBbhlcaZqlrjimdX7Tc9ABIsP7dcaeikj35ZKCO4YOm9QJc6Wcf5-Z2XvoTV7q/exec";
-        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRL5GhYhVk73pcMDCdRHI_kefwVh9X60hxTN6tNywjDZDUwAO29ijnbW71nfxMvsyASJIKBZLJvmsxv/pub?output=csv";
-
         const STUDENTS = [
             "Ahmad Madhany Iffat bin Zuhairy Ismail",
             "Aryan Mikail bin Mohd Asyraf",
@@ -657,7 +705,7 @@ function doPost(e) {
             BI: [
                 { id: 'BI 1.1', type: 'Rekod Anekdot', desc: 'Mendengar, memahami dan bertindak balas secara wajar mengikut situasi.' },
                 { id: 'BI 1.2', type: 'Senarai Semak', desc: 'Mendengar, mengecam bunyi and bertindak balas kepada rangsangan mudah.', items: ["Mengecam bunyi abjad", "Bertindak balas dengan isyarat visual"] },
-                { id: 'BI 2.1', type: 'Skala Kadar', desc: 'Berkomunikasi secara lisan dan membina keyakinan diri.' },
+                { id: 'BI 2.1', type: 'Skala Kadar', desc: 'Berkomunikasi secara lisan and membina keyakinan diri.' },
                 { id: 'BI 3.2', type: 'Senarai Semak', desc: 'Membaca dan memahami teks harian yang mudah.', items: ["Mengecam perkataan ringkas", "Membaca frasa mudah"] },
                 { id: 'BI 4.2', type: 'Skala Kadar', desc: 'Menyampaikan idea melalui penulisan, simbol atau lukisan.' }
             ],
@@ -727,6 +775,7 @@ function doPost(e) {
         let selectedFileType = '';
         let selectedFileName = '';
 
+        // AUTOMASI GOOGLE SHEETS
         function getApiUrl() {
             return localStorage.getItem('gsheet_url') || "";
         }
@@ -840,8 +889,20 @@ function doPost(e) {
             return "Tiada cadangan intervensi buat masa ini.";
         }
 
+        function updateYearDisplay() {
+            const year = localStorage.getItem('academic_year') || "2026";
+            const nextYear = parseInt(year) + 1;
+            
+            document.querySelectorAll('.display-year').forEach(el => el.textContent = year);
+            document.querySelectorAll('.display-year-range').forEach(el => el.textContent = `${year}/${nextYear}`);
+            
+            const yearInput = document.getElementById('gdrive-session-year');
+            if (yearInput) yearInput.value = year;
+        }
+
         function initApp() {
             loadFromLocalStorage();
+            updateYearDisplay();
             
             const s1 = document.getElementById('form-student-select');
             const s2 = document.getElementById('report-student-select');
@@ -944,15 +1005,15 @@ function doPost(e) {
                     apiStatusMsg.innerHTML = '<span class="text-sky-600 flex items-center gap-1.5 font-bold"><i data-lucide="check-circle" class="w-4 h-4"></i>Pautan Google Sheets Web App Aktif &amp; Bersedia!</span>';
                 }
                 if (statConnection) {
-                    statConnection.className = "text-[10px] font-black text-blue-800 mt-2.5 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100 inline-block uppercase tracking-wider";
-                    statConnection.textContent = "Google Sheets Aktif";
+                    statConnection.className = "text-[10px] font-black text-blue-800 mt-2 bg-blue-50/80 px-3 py-1.5 rounded-lg border border-blue-100 inline-block uppercase tracking-wider";
+                    statConnection.textContent = "Google Sheets Hack Aktif";
                 }
             } else {
                 if (apiStatusMsg) {
                     apiStatusMsg.innerHTML = '<span class="text-rose-600 flex items-center gap-1.5 font-bold"><i data-lucide="alert-circle" class="w-4 h-4"></i>Tiada Pautan Google Sheets Disimpan.</span>';
                 }
                 if (statConnection) {
-                    statConnection.className = "text-[10px] font-black text-rose-800 mt-2.5 bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-100 inline-block uppercase tracking-wider";
+                    statConnection.className = "text-[10px] font-black text-rose-800 mt-2 bg-rose-50/80 px-3 py-1.5 rounded-lg border border-rose-100 inline-block uppercase tracking-wider";
                     statConnection.textContent = "Luar Talian (Offline)";
                 }
             }
@@ -975,11 +1036,19 @@ function doPost(e) {
             const url = urlInput ? urlInput.value.trim() : '';
             if (url) {
                 localStorage.setItem('gsheet_url', url);
-                showToast('Pautan Google Sheets Berjaya Disimpan!', 'success');
+                showToast('Pautan Google Sheets Berjaya Simpan!', 'success');
             } else {
                 localStorage.removeItem('gsheet_url');
                 showToast('Pautan dikosongkan.', 'success');
             }
+
+            const yearInput = document.getElementById('gdrive-session-year');
+            if (yearInput) {
+                const yearVal = yearInput.value.trim();
+                localStorage.setItem('academic_year', yearVal || "2026");
+                updateYearDisplay();
+            }
+
             updateApiStatusDisplay();
             renderDashboard();
         }
@@ -1143,6 +1212,7 @@ function doPost(e) {
                 evidenceName: selectedFileName || "",
                 evidenceType: selectedFileType || "",
                 evidenceBase64: selectedFileBase64 || "",
+                evidenLink: "", 
                 data: data,
                 eviden: ulasanEviden,
                 tp: tp,
@@ -1156,7 +1226,7 @@ function doPost(e) {
             saveToLocalStorage();
             showToast('Rekod berjaya disimpan secara tempatan (Lokal)!', 'success');
 
-            // IMPLEMENTASI KOD WAJIB AUTOMATION GOOGLE SHEETS
+            // IMPLEMENTASI KOD AUTOMATION GOOGLE SHEETS & DRIVE UPLOAD
             const scriptURL = localStorage.getItem("gsheet_url");
             if (!scriptURL) {
                 showToast("Sila lengkapkan setup Google Sheet terlebih dahulu", "error");
@@ -1177,16 +1247,35 @@ function doPost(e) {
                     fileData: recordObject.evidenceBase64
                 };
 
+                // Guna text/plain untuk mengelakkan ralat 'preflight OPTIONS' dari browser ke Google Script
                 fetch(scriptURL, {
                     method: "POST",
                     body: JSON.stringify(postData),
                     headers: {
-                        "Content-Type": "application/json"
-                    },
-                    mode: 'no-cors' // Melindungi permintaan daripada sekatan keselamatan asal penyemak imbas (CORS)
+                        "Content-Type": "text/plain;charset=utf-8"
+                    }
                 })
-                .then(res => showToast("Data berjaya dihantar ke Google Sheet", "success"))
-                .catch(err => showToast("Ralat sambungan Google Sheet", "error"));
+                .then(res => res.json())
+                .then(resData => {
+                    if (resData.success && resData.fileUrl) {
+                        recordObject.evidenLink = resData.fileUrl;
+                        recordObject.evidenceBase64 = ""; 
+                        
+                        const idx = records.findIndex(r => r.id === recordObject.id);
+                        if (idx !== -1) {
+                            records[idx].evidenLink = resData.fileUrl;
+                            records[idx].evidenceBase64 = "";
+                        }
+                        saveToLocalStorage();
+                        renderLogTable();
+                        renderIndividualCertificate();
+                    }
+                    showToast("Data & Evidens berjaya dihantar ke Google Sheet dan Google Drive!", "success");
+                })
+                .catch(err => {
+                    console.error("Google Web App POST Error:", err);
+                    showToast("Ralat sambungan atau pematuhan API Google Sheet", "error");
+                });
             }
 
             submitBtn.disabled = false;
@@ -1219,7 +1308,7 @@ function doPost(e) {
         function filterDashboardBidang(sub) {
             dashboardBidangFilter = sub;
             document.querySelectorAll('#dashboard-bidang-filters button').forEach(b => {
-                b.className = "px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 uppercase";
+                b.className = "px-4 py-2.5 text-[10px] font-bold rounded-xl transition-all bg-white border border-slate-200 text-slate-650 hover:bg-slate-100 uppercase";
             });
             const activeBtn = document.getElementById('dash-btn-' + sub.toLowerCase());
             if (activeBtn) {
@@ -1255,7 +1344,7 @@ function doPost(e) {
                 const subs = dashboardBidangFilter === 'ALL' ? Object.keys(COMPONENTS) : [dashboardBidangFilter];
                 
                 subs.forEach(s => {
-                    let html = `<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm print-card-break premium-card mb-6">
+                    let html = `<div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm print-card-break premium-card mb-6">
                         <h3 class="font-bold text-xs uppercase tracking-wider mb-4 text-[#0B1528] flex items-center gap-2"><i data-lucide="bookmark" class="w-4 h-4 text-blue-600"></i>Bidang Pentaksiran: ${s} &bull; ${SUBJECT_NAMES[s]}</h3>
                         <div class="grid grid-cols-3 gap-4">`;
                     
@@ -1321,7 +1410,9 @@ function doPost(e) {
                 filt.forEach(r => {
                     let det = r.eviden || r.data.text || r.data.skala || "Penilaian Selesai";
                     let linkHTML = '';
-                    if (r.evidenceName && r.evidenceBase64) {
+                    if (r.evidenLink) {
+                        linkHTML = `<br><a href="${r.evidenLink}" target="_blank" class="text-blue-650 text-[10px] hover:underline flex items-center gap-1 mt-1.5 font-bold"><i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i> Buka Evidens (Google Drive)</a>`;
+                    } else if (r.evidenceName && r.evidenceBase64) {
                         linkHTML = `<br><a href="data:${r.evidenceType};base64,${r.evidenceBase64}" download="${r.evidenceName}" class="text-blue-650 text-[10px] hover:underline flex items-center gap-1 mt-1.5 font-bold max-w-[150px] truncate"><i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i> ${r.evidenceName}</a>`;
                     }
                     const tpStyle = r.tp === 1 ? 'bg-rose-600' : (r.tp === 2 ? 'bg-amber-500' : 'bg-emerald-600');
@@ -1384,10 +1475,12 @@ function doPost(e) {
                         badgeText = 'TP ' + avg;
                         badgeColor = avg === 1 ? 'text-rose-600' : (avg === 2 ? 'text-amber-500' : 'text-emerald-600');
                     }
-                    grid.innerHTML += `<div class="bg-slate-50 p-4.5 rounded-xl border border-slate-200 text-left">
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">${SUBJECT_NAMES[s] || s}</p>
-                        <div class="text-base font-black ${badgeColor} mt-2">${badgeText}</div>
-                        <p class="text-[9px] text-slate-500 font-semibold mt-1 uppercase">${subR.length}/${COMPONENTS[s].length} Dinilai</p>
+                    grid.innerHTML += `<div class="bg-slate-50 p-4.5 rounded-xl border border-slate-200 text-left flex flex-col justify-between break-words min-h-[95px]">
+                        <p class="text-[11px] font-extrabold text-slate-700 uppercase tracking-wide leading-tight">${SUBJECT_NAMES[s] || s}</p>
+                        <div class="flex items-baseline justify-between mt-2.5">
+                            <span class="text-base font-black ${badgeColor}">${badgeText}</span>
+                            <span class="text-[9px] text-slate-450 font-bold uppercase">${subR.length}/${COMPONENTS[s].length} Dinilai</span>
+                        </div>
                     </div>`;
                 });
             }
@@ -1402,15 +1495,12 @@ function doPost(e) {
                     return;
                 }
                 allR.forEach(r => {
-                    let det = r.eviden || r.data.text || r.data.skala || "Penilaian Selesai";
-                    let linkHTML = '';
-                    if (r.evidenceName && r.evidenceBase64) {
-                        linkHTML = `<br><a href="data:${r.evidenceType};base64,${r.evidenceBase64}" download="${r.evidenceName}" class="text-[10px] text-blue-650 font-bold hover:underline flex items-center gap-1 mt-2"><i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i> Fail Bukti: ${r.evidenceName}</a>`;
-                    }
+                    const compDef = COMPONENTS[r.subject]?.find(c => c.id === r.componentId);
+                    const compDesc = compDef ? compDef.desc : "";
                     const tpBadgeColor = r.tp === 1 ? 'bg-rose-50 text-rose-800 border-rose-100' : (r.tp === 2 ? 'bg-amber-50 text-amber-800 border-amber-100' : 'bg-emerald-50 text-emerald-800 border-emerald-100');
                     
-                    detList.innerHTML += `<div class="py-5 flex justify-between items-start text-xs border-b border-slate-100 gap-4">
-                        <div><span class="font-bold text-slate-900 mr-2 uppercase">[${r.componentId}]</span><span class="text-slate-600 font-medium">${det}</span>${linkHTML}</div>
+                    detList.innerHTML += `<div class="py-4 flex justify-between items-center text-xs border-b border-slate-100 gap-4">
+                        <div><span class="font-bold text-slate-950 mr-2 uppercase">[${r.componentId}]</span><span class="text-slate-600 font-medium">${compDesc}</span></div>
                         <div class="${tpBadgeColor} px-2.5 py-1 rounded-lg border font-extrabold text-[10px] shrink-0">TP ${r.tp}</div>
                     </div>`;
                 });
@@ -1496,9 +1586,11 @@ function doPost(e) {
             closePrintWizard();
             let printHTML = '';
             let docTitle = 'Laporan Pentaksiran';
+            const yearStr = localStorage.getItem('academic_year') || "2026";
+            const nextYearStr = parseInt(yearStr) + 1;
             
             if (currentPrintTarget === 'dashboard') {
-                docTitle = 'Analisis Laporan Tahap Penguasaan Prasekolah Pintar 2026';
+                docTitle = 'Analisis Laporan Tahap Penguasaan Prasekolah Pintar ' + yearStr;
                 let totalR = records.length;
                 let t1 = 0, t2 = 0, t3 = 0;
                 records.forEach(r => {
@@ -1519,7 +1611,7 @@ function doPost(e) {
                         <div><strong>KUMPULAN / KELAS:</strong> Prasekolah Pintar</div>
                         <div><strong>GURU PENILAI:</strong> Cik Ainie Amanie</div>
                         <div><strong>JUAH REKOD PENTAKSIRAN:</strong> ${totalR} Rekod</div>
-                        <div><strong>TARIKH PENJANAAN DOKUMEN:</strong> ${new Date().toLocaleDateString('ms-MY')}</div>
+                        <div><strong>SESI AKADEMIK:</strong> Sesi ${yearStr}/${nextYearStr}</div>
                     </div>
                     <div class="grid grid-cols-4 gap-4 text-center my-6">
                         <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">PURATA TP</p><p class="text-lg font-black text-slate-900">${avgTpVal}</p></div>
@@ -1552,7 +1644,7 @@ function doPost(e) {
             } else if (currentPrintTarget === 'pelaporan') {
                 const certArea = document.getElementById('certificate-print-area');
                 if (certArea) {
-                    docTitle = 'Laporan_Prestasi_Murid_Rasmi_' + document.getElementById('cert-student-name').textContent;
+                    docTitle = 'Laporan_Prestasi_Murid_Rasmi_' + document.getElementById('cert-student-name').textContent + '_' + yearStr;
                     printHTML = certArea.innerHTML;
                 } else {
                     showToast('Tiada maklumat murid dipilih.', 'error');
@@ -1576,7 +1668,7 @@ function doPost(e) {
                         <script src="https://unpkg.com/lucide@latest"><\/script>
                         <style>
                             body { font-family: Arial, Helvetica, sans-serif !important; background-color: white !important; color: black !important; padding: 30px; }
-                            .serif-title { font-family: 'Playfair Display', Georgia, serif; }
+                            .serif-title { font-family: Arial, Helvetica, sans-serif !important; }
                             @media print { .no-print { display: none !important; } }
                             * { font-family: Arial, Helvetica, sans-serif !important; }
                         </style>
@@ -1832,22 +1924,3 @@ function doPost(e) {
     </script>
 </body>
 </html>
-const API_URL = "https://script.google.com/macros/s/AKfycby61hvdnis4twM81TWjF25rGnJP2Q3qUZ0BqCSCP8azxcTvXP3Qf7DRSikZuUQh3bnL/exec";
-
-async function loadDataFromSheet() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
-
-  console.log(data);
-
-  // contoh masuk dropdown murid
-  const select = document.getElementById("form-student-select");
-  select.innerHTML = "";
-
-  data.slice(1).forEach(row => {
-    let option = document.createElement("option");
-    option.value = row[0];
-    option.textContent = row[0];
-    select.appendChild(option);
-  });
-}
